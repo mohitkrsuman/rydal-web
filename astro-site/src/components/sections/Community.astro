@@ -1,0 +1,66 @@
+---
+import Icon from '../Icon.astro';
+---
+
+<section class="py-32 bg-dark-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="glass-panel p-1 border-hero-accent/20">
+      <div class="bg-dark-bg p-8 md:p-16 flex flex-col lg:flex-row gap-16 items-center">
+        <div class="flex-1 order-2 lg:order-1">
+          <div class="inline-flex items-center gap-2 text-hero-accent font-black italic uppercase tracking-tighter mb-6">
+            <Icon name="award" size={24} class="w-6 h-6" />
+            <span>Contributor Program</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black italic tracking-tighter uppercase mb-6 leading-tight">
+            Ride Smarter.<br />
+            Get <span class="text-hero-accent">Rewarded.</span>
+          </h2>
+          <p class="text-dark-text-secondary text-lg mb-8 max-w-xl">
+            Our community-built database gets smarter with every kilometer. Contribute data on road conditions, hidden viewpoints, and dangerous patches to earn subscription discounts and exclusive gear.
+          </p>
+          <div class="grid grid-cols-2 gap-8">
+            <div>
+              <div class="text-3xl font-black italic text-white mb-1">15% OFF</div>
+              <div class="text-[10px] uppercase tracking-widest text-dark-text-secondary">Basic contribution</div>
+            </div>
+            <div>
+              <div class="text-3xl font-black italic text-hero-accent mb-1">40% OFF</div>
+              <div class="text-[10px] uppercase tracking-widest text-dark-text-secondary">Elite road scout</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:order-2 grid grid-cols-2 gap-4 w-full">
+          <div class="space-y-4">
+            <div class="h-40 glass-panel rounded-lg flex items-center justify-center -rotate-3 hover:rotate-0 transition-transform">
+              <div class="text-center">
+                <Icon name="map-pin" size={32} class="w-8 h-8 text-warning mx-auto mb-2" />
+                <span class="text-[10px] font-bold uppercase tracking-widest">New Viewpoint</span>
+              </div>
+            </div>
+            <div class="h-32 glass-panel rounded-lg flex items-center justify-center rotate-2 hover:rotate-0 transition-transform border-success/30">
+              <div class="text-center">
+                <Icon name="alert-triangle" size={32} class="w-8 h-8 text-success mx-auto mb-2" />
+                <span class="text-[10px] font-bold uppercase tracking-widest">Clear Road</span>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="h-32 glass-panel rounded-lg flex items-center justify-center -rotate-2 hover:rotate-0 transition-transform border-danger/30">
+              <div class="text-center">
+                <Icon name="zap" size={32} class="w-8 h-8 text-danger mx-auto mb-2" />
+                <span class="text-[10px] font-bold uppercase tracking-widest">Pothole Alert</span>
+              </div>
+            </div>
+            <div class="h-40 glass-panel rounded-lg flex items-center justify-center rotate-3 hover:rotate-0 transition-transform border-info/30">
+              <div class="text-center">
+                <Icon name="mic" size={32} class="w-8 h-8 text-info mx-auto mb-2" />
+                <span class="text-[10px] font-bold uppercase tracking-widest">Voice Note</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

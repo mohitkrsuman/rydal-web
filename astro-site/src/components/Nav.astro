@@ -1,0 +1,36 @@
+---
+import InteractiveNav from './InteractiveNav';
+import { navLinks } from '../data/site';
+---
+
+<nav class="fixed top-0 w-full z-50 border-b border-dark-border bg-dark-bg/40 backdrop-blur-xl isolate" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <a href="/" class="flex shrink-0 items-center" aria-label="Rydal home">
+        <img
+          src="/app_logo_white.png"
+          alt="Rydal Logo"
+          class="h-9 w-auto md:h-10 object-contain"
+          width="86"
+          height="40"
+        />
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8 uppercase text-xs font-bold tracking-widest text-dark-text-secondary">
+        {navLinks.map((link) => (
+          <a href={link.href} class="hover:text-hero-accent transition-colors">
+            {link.name}
+          </a>
+        ))}
+        <a
+          href="#waitlist"
+          class="px-6 py-2 bg-hero-accent text-white hover:bg-opacity-90 transition-all rounded-sm uppercase tracking-tighter italic font-black"
+        >
+          Join Beta
+        </a>
+      </div>
+
+      <InteractiveNav client:load />
+    </div>
+  </div>
+</nav>

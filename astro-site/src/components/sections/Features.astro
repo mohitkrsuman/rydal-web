@@ -1,0 +1,35 @@
+---
+import Icon from '../Icon.astro';
+import { features } from '../../data/site';
+---
+
+<section id="features" class="py-24 border-y border-dark-border bg-dark-surface/30">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-white">
+      <div class="max-w-2xl">
+        <span class="text-hero-accent font-mono text-xs tracking-widest uppercase mb-2 block">// Core Ecosystem</span>
+        <h2 class="text-4xl md:text-5xl font-black italic tracking-tight uppercase">Performance Driven Engineering</h2>
+      </div>
+      <div class="hidden md:block text-right">
+        <span class="text-dark-text-secondary font-mono text-4xl block">01-04</span>
+        <span class="text-[10px] uppercase tracking-widest opacity-40 italic">System modules</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-dark-border border border-dark-border">
+      {features.map((feature) => (
+        <article class="bg-dark-bg p-8 group hover:bg-dark-surface transition-all duration-500">
+          <div class="mb-6 transform group-hover:scale-110 transition-transform duration-500">
+            <Icon name={feature.icon} size={32} class="w-8 h-8 text-hero-accent" />
+          </div>
+          <h3 class="text-xl font-black italic uppercase mb-4 tracking-tighter group-hover:text-hero-accent transition-colors">
+            {feature.title}
+          </h3>
+          <p class="text-dark-text-secondary text-sm leading-relaxed">
+            {feature.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

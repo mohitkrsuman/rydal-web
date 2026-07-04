@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-dark-text-primary antialiased;
+    cursor: crosshair;
+  }
+  ::selection {
+    background: #2F6BFF;
+    color: white;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-dark-surface/80 backdrop-blur-md border border-dark-border;
+  }
+  .text-outline-white {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  .animate-blob-1 {
+    animation: blob-1 20s linear infinite;
+  }
+  .animate-blob-2 {
+    animation: blob-2 25s linear infinite;
+  }
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+  .animate-pulse-mic {
+    animation: pulse-mic 2s ease-in-out infinite;
+  }
+}
+
+@keyframes blob-1 {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  33% { transform: scale(1.2) translate(100px, 50px); }
+  66% { transform: scale(1) translate(0, 0); }
+}
+
+@keyframes blob-2 {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  33% { transform: scale(1.3) translate(-80px, -60px); }
+  66% { transform: scale(1) translate(0, 0); }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-mic {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}

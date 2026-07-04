@@ -1,0 +1,8 @@
+{
+  "name": "Rydal - The Ultimate Rider Dashboard",
+  "description": "A high-tech safety and navigation ecosystem for motorcyclists featuring group sync, SOS alerts, and voice-first interface.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}

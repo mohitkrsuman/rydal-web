@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BackgroundAnimation from '../components/BackgroundAnimation.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/sections/Hero.astro';
+import Features from '../components/sections/Features.astro';
+import Safety from '../components/sections/Safety.astro';
+import Dashboard from '../components/sections/Dashboard.astro';
+import Community from '../components/sections/Community.astro';
+import Waitlist from '../components/sections/Waitlist.astro';
+import Footer from '../components/sections/Footer.astro';
+---
+
+<BaseLayout>
+  <div class="min-h-screen bg-transparent text-dark-text-primary selection:bg-hero-accent selection:text-white relative">
+    <BackgroundAnimation />
+    <Nav />
+
+    <main>
+      <Hero />
+      <Features />
+      <Safety />
+      <Dashboard />
+      <Community />
+      <Waitlist />
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>

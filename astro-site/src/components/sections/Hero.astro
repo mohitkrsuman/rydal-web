@@ -1,0 +1,40 @@
+---
+import Icon from '../Icon.astro';
+---
+
+<section class="relative pt-32 pb-20 overflow-hidden min-h-[90vh] flex items-center">
+  <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none overflow-hidden hidden lg:block" aria-hidden="true">
+    <div class="w-full h-full bg-gradient-to-bl from-hero-accent to-transparent rotate-12 -translate-y-20 translate-x-20"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-3xl animate-fade-up">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-dark-border bg-dark-surface/50 text-hero-accent text-[10px] font-bold tracking-widest uppercase mb-6">
+        <Icon name="zap" size={12} class="w-3 h-3" />
+        <span>The ultimate guardian for every rider</span>
+      </div>
+      <h1 class="text-6xl md:text-8xl font-black italic tracking-tighter leading-[0.9] mb-8 uppercase">
+        YOUR PACK.<br />
+        <span class="text-hero-accent text-outline-white">SYNCED.</span><br />
+        YOUR RIDE.<br />
+        SECURED.
+      </h1>
+      <p class="text-lg md:text-xl text-dark-text-secondary max-w-xl mb-12">
+        A high-tech riding platform that transforms your smartphone into a dedicated motorcycle dashboard. Focused on real-time safety and hands-free utility.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#waitlist" class="px-10 py-5 bg-hero-accent text-white font-black italic uppercase tracking-tighter text-xl hover:scale-105 active:scale-95 transition-all text-center">
+          Join the Waitlist
+        </a>
+        <a href="#features" class="px-10 py-5 border border-dark-border hover:bg-dark-surface text-white font-black italic uppercase tracking-tighter text-xl transition-all text-center">
+          Explore Features
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30" aria-hidden="true">
+    <span class="text-[10px] uppercase tracking-[0.4em] font-bold">Scroll to navigate</span>
+    <div class="w-px h-12 bg-gradient-to-b from-hero-accent to-transparent"></div>
+  </div>
+</section>

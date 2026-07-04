@@ -1,0 +1,62 @@
+---
+import Icon from '../Icon.astro';
+---
+
+<section id="safety" class="py-32 bg-dark-bg overflow-hidden relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-20">
+      <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-6">
+        The Dual-Layer <span class="text-hero-accent">Safety Net</span>
+      </h2>
+      <p class="text-dark-text-secondary max-w-2xl mx-auto uppercase tracking-wider text-sm font-bold">
+        Whether you're on a solo commute or a cross-country tour, help is always one signal away.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <article class="glass-panel p-10 relative overflow-hidden hover:-translate-y-2 transition-transform duration-300">
+        <div class="absolute top-0 right-0 p-8 opacity-10" aria-hidden="true">
+          <Icon name="users" size={120} class="text-hero-accent" />
+        </div>
+        <div class="flex items-center gap-4 mb-8">
+          <div class="p-4 bg-hero-accent/10 rounded-full">
+            <Icon name="shield" size={32} class="w-8 h-8 text-hero-accent" />
+          </div>
+          <span class="text-xs font-mono tracking-widest uppercase opacity-50">Mode: Pack Synchronization</span>
+        </div>
+        <h3 class="text-3xl font-black italic uppercase mb-6 tracking-tighter">For Group Riders</h3>
+        <p class="text-dark-text-secondary mb-8 text-lg">
+          In the event of a crash, every member in your group receives <strong>instant, high-priority alerts</strong> with exact GPS coordinates. Friends become first responders.
+        </p>
+        <div class="border-t border-dark-border pt-8 mt-auto">
+          <div class="flex items-center gap-3 text-success font-bold uppercase text-xs tracking-widest">
+            <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+            Immediate Support Protocol
+          </div>
+        </div>
+      </article>
+
+      <article class="glass-panel p-10 relative overflow-hidden border-hero-accent/30 hover:-translate-y-2 transition-transform duration-300">
+        <div class="absolute top-0 right-0 p-8 opacity-10 text-white" aria-hidden="true">
+          <Icon name="navigation" size={120} />
+        </div>
+        <div class="flex items-center gap-4 mb-8">
+          <div class="p-4 bg-danger/10 rounded-full">
+            <Icon name="bell" size={32} class="w-8 h-8 text-danger" />
+          </div>
+          <span class="text-xs font-mono tracking-widest uppercase opacity-50">Mode: Solo Sentry</span>
+        </div>
+        <h3 class="text-3xl font-black italic uppercase mb-6 tracking-tighter">For Solo Riders</h3>
+        <p class="text-dark-text-secondary mb-8 text-lg text-white">
+          Accident detected? Rydal triggers an <strong>Automatic Emergency SOS</strong>, sending your live location to pre-set contacts via SMS and Data. No rider is ever truly alone.
+        </p>
+        <div class="border-t border-dark-border pt-8 mt-auto">
+          <div class="flex items-center gap-3 text-danger font-bold uppercase text-xs tracking-widest">
+            <span class="w-2 h-2 rounded-full bg-danger animate-ping"></span>
+            Emergency Broadcast Protocol
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
