@@ -37,7 +37,8 @@ const jsonLd = {
         priceCurrency: 'USD',
       },
       featureList: [
-        'Group ride synchronization',
+        'Real-time group ride tracking and synchronization',
+        'Riders companion for safe solo and group riding',
         'Dual-layer safety alerts',
         'Voice-first motorcycle dashboard',
         'Community road intelligence',
@@ -62,7 +63,7 @@ const jsonLd = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="motorcycle app, rider safety, group ride sync, motorcycle navigation, voice assistant, SOS alerts, biker dashboard, Rydal" />
+    <meta name="keywords" content={site.keywords} />
     <link rel="canonical" href={canonicalURL} />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0A0A0A" />

@@ -1,10 +1,12 @@
 export const site = {
   name: 'Rydal',
-  title: 'Rydal — The Ultimate Rider Dashboard',
+  title: 'Rydal — Riding Assistant & Riders Companion for Safe Group Riding',
   description:
-    'A high-tech riding platform that transforms your smartphone into a dedicated motorcycle dashboard. Real-time group sync, dual-layer safety alerts, and hands-free voice navigation for every rider.',
+    'Rydal is the riding assistant and riders companion built for safe group riding — real-time rider tracking, dual-layer safety alerts, and hands-free voice navigation, all from your smartphone.',
   url: 'https://rydal.app',
   tagline: 'Your pack. Synced. Your ride. Secured.',
+  keywords:
+    'riding assistant, riders companion, riding companion for safe riding, group riding, motorcycle tracking, real-time rider tracking, motorcycle app, rider safety, group ride sync, motorcycle navigation, voice assistant, SOS alerts, biker dashboard, Rydal',
 };
 
 export const navLinks = [
@@ -19,7 +21,7 @@ export const features = [
     icon: 'users' as const,
     title: 'Group Synchronization',
     description:
-      "Live location of every member in your pack. No more 'where is everyone?' stress.",
+      "Real-time tracking of every member in your pack for effortless group riding. No more 'where is everyone?' stress.",
   },
   {
     icon: 'navigation' as const,
