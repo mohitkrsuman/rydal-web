@@ -1,5 +1,4 @@
 ---
-import WaitlistForm from '../WaitlistForm';
 import Icon from '../Icon.astro';
 ---
 
@@ -34,9 +33,73 @@ import Icon from '../Icon.astro';
       Be the first to experience the Rydal ecosystem.
     </p>
 
-    <!-- Waitlist form -->
-    <div class="reveal" style="transition-delay:400ms">
-      <WaitlistForm client:load />
+    <!-- Waitlist form (Native Astro + Vanilla JS) -->
+    <div class="reveal relative" style="transition-delay:400ms">
+      
+      <!-- Hidden iframe to prevent page redirect on submit -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { document.getElementById('waitlist-form-container').style.display='none'; document.getElementById('waitlist-success').style.display='flex'; }"></iframe>
+
+      <!-- Success Message (Hidden by default) -->
+      <div id="waitlist-success" class="p-12 glass-panel border-success/30 rounded-lg flex-col items-center hidden" style="display: none;">
+        <div class="w-20 h-20 bg-success/20 rounded-full flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+        </div>
+        <h3 class="text-3xl font-black italic uppercase mb-4 tracking-tighter text-white">Welcome aboard, Rider.</h3>
+        <p class="text-dark-text-secondary italic tracking-widest font-bold uppercase text-sm">You are officially on the list. High-five.</p>
+      </div>
+
+      <!-- Form Container -->
+      <div id="waitlist-form-container">
+        <form 
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfksf_Z4wD-uweTlIyAhp5mOjNoJUpIZ9IOcRh12rq4lU6fQw/formResponse" 
+          method="post" 
+          target="hidden_iframe" 
+          onsubmit="window.submitted=true; document.getElementById('submit-btn-text').style.display='none'; document.getElementById('submit-btn-processing').style.display='inline-flex'; document.getElementById('submit-btn').disabled=true;"
+          class="space-y-3 sm:space-y-4"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <input
+              required
+              type="text"
+              name="entry.777409729"
+              placeholder="YOUR NAME"
+              class="w-full bg-dark-surface border border-dark-border px-4 sm:px-6 py-4 sm:py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white text-sm sm:text-base"
+            />
+            <input
+              required
+              type="email"
+              name="entry.2061601030"
+              placeholder="EMAIL ADDRESS"
+              class="w-full bg-dark-surface border border-dark-border px-4 sm:px-6 py-4 sm:py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white text-sm sm:text-base"
+            />
+          </div>
+          <select 
+            name="entry.1472215364" 
+            required 
+            class="w-full bg-dark-surface border border-dark-border px-4 sm:px-6 py-4 sm:py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white appearance-none text-sm sm:text-base"
+          >
+            <option value="">SELECT YOUR MACHINE</option>
+            <option value="Sport / Street">SPORT / STREET</option>
+            <option value="ADV/ Dual sport">ADV / DUAL SPORT</option>
+            <option value="Cruiser">CRUISER</option>
+            <option value="Track / Race">TRACK / RACE</option>
+            <option value="other / vintage">OTHER / VINTAGE</option>
+          </select>
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full py-4 sm:py-6 bg-hero-accent text-white font-black italic uppercase text-lg sm:text-2xl tracking-tighter hover:bg-opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-3 sm:gap-4"
+          >
+            <span id="submit-btn-text" class="flex items-center gap-3 sm:gap-4">
+              Request Beta Access
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </span>
+            <span id="submit-btn-processing" style="display: none;">
+              PROCESSING...
+            </span>
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- Social proof -->

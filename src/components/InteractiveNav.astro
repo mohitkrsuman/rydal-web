@@ -1,0 +1,115 @@
+---
+const navLinks = [
+  { name: 'Features', href: '#features' },
+  { name: 'Safety', href: '#safety' },
+  { name: 'Dashboard', href: '#dashboard' },
+  { name: 'Waitlist', href: '#waitlist' },
+];
+---
+
+<button
+  type="button"
+  id="mobile-menu-btn"
+  class="md:hidden relative z-[70] text-white p-2 rounded-sm hover:bg-dark-surface/80 transition-colors"
+  aria-label="Open menu"
+  aria-expanded="false"
+>
+  <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+  <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+
+<div id="mobile-menu-overlay" class="hidden">
+  <!-- Backdrop -->
+  <button
+    type="button"
+    id="mobile-menu-backdrop"
+    class="fixed inset-0 z-[55] bg-dark-bg/95 backdrop-blur-xl md:hidden cursor-default w-full h-full"
+    aria-label="Close menu"
+  ></button>
+
+  <div class="fixed inset-x-0 top-20 bottom-0 z-[60] md:hidden overflow-y-auto bg-dark-bg border-t border-dark-border">
+    <div class="px-6 py-8 flex flex-col min-h-full">
+      <div class="flex justify-between items-center mb-10">
+        <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-hero-accent">// Menu</span>
+        <button
+          type="button"
+          id="mobile-menu-close-text"
+          class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-dark-text-secondary hover:text-white transition-colors"
+        >
+          Close
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="flex flex-col space-y-6 uppercase text-xl font-black italic">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link hover:text-hero-accent transition-colors py-2 border-b border-dark-border/50"
+          >
+            {link.name}
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href="#waitlist"
+        class="mobile-nav-link mt-10 px-6 py-4 bg-hero-accent text-white text-center hover:bg-opacity-90 transition-all rounded-sm uppercase tracking-tighter italic font-black"
+      >
+        Join Beta
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  const backdrop = document.getElementById('mobile-menu-backdrop');
+  const closeText = document.getElementById('mobile-menu-close-text');
+  const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+  let isOpen = false;
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    if (isOpen) {
+      if (overlay) overlay.classList.remove('hidden');
+      if (iconOpen) iconOpen.classList.add('hidden');
+      if (iconClose) iconClose.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-label', 'Close menu');
+      }
+    } else {
+      if (overlay) overlay.classList.add('hidden');
+      if (iconOpen) iconOpen.classList.remove('hidden');
+      if (iconClose) iconClose.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Open menu');
+      }
+    }
+  }
+
+  if (btn) btn.addEventListener('click', toggleMenu);
+  if (backdrop) backdrop.addEventListener('click', toggleMenu);
+  if (closeText) closeText.addEventListener('click', toggleMenu);
+  if (navLinks) {
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) toggleMenu();
+      });
+    });
+  }
+</script>

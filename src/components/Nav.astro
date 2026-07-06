@@ -1,5 +1,5 @@
 ---
-import InteractiveNav from './InteractiveNav';
+import InteractiveNav from './InteractiveNav.astro';
 import { navLinks } from '../data/site';
 ---
 
@@ -35,7 +35,7 @@ import { navLinks } from '../data/site';
       </div>
 
       <!-- Mobile hamburger (InteractiveNav handles this) -->
-      <InteractiveNav client:load />
+      <InteractiveNav />
     </div>
   </div>
 </nav>
