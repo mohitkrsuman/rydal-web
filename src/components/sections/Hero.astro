@@ -1,40 +1,708 @@
 ---
-import Icon from '../Icon.astro';
+import Icon from "../Icon.astro";
 ---
 
-<section class="relative pt-32 pb-20 overflow-hidden min-h-[90vh] flex items-center">
-  <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none overflow-hidden hidden lg:block" aria-hidden="true">
-    <div class="w-full h-full bg-gradient-to-bl from-hero-accent to-transparent rotate-12 -translate-y-20 translate-x-20"></div>
+<section
+  class="relative pt-32 sm:pt-32 pb-28 sm:pb-20 overflow-hidden sm:min-h-screen flex items-center parallax-container"
+  id="hero"
+>
+  <!-- Speed-line atmospheric overlay -->
+  <div class="speed-lines" aria-hidden="true">
+    <div class="speed-line" style="--top: 18%; --duration: 3.2s; --delay: 0s;">
+    </div>
+    <div
+      class="speed-line"
+      style="--top: 32%; --duration: 2.4s; --delay: 0.6s;"
+    >
+    </div>
+    <div
+      class="speed-line"
+      style="--top: 48%; --duration: 3.8s; --delay: 1.2s;"
+    >
+    </div>
+    <div
+      class="speed-line"
+      style="--top: 62%; --duration: 2.8s; --delay: 0.3s;"
+    >
+    </div>
+    <div
+      class="speed-line"
+      style="--top: 74%; --duration: 3.5s; --delay: 0.9s;"
+    >
+    </div>
+    <div
+      class="speed-line"
+      style="--top: 85%; --duration: 2.2s; --delay: 1.8s;"
+    >
+    </div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="max-w-3xl animate-fade-up">
-      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-dark-border bg-dark-surface/50 text-hero-accent text-[10px] font-bold tracking-widest uppercase mb-6">
-        <Icon name="zap" size={12} class="w-3 h-3" />
-        <span>The riding assistant and riders companion for every rider</span>
+  <!-- Diagonal accent stripe (desktop only) -->
+  <div
+    class="absolute top-0 right-0 w-1/2 h-full opacity-[0.07] pointer-events-none overflow-hidden hidden lg:block"
+    aria-hidden="true"
+  >
+    <div
+      class="w-full h-full bg-gradient-to-bl from-hero-accent to-transparent rotate-12 -translate-y-20 translate-x-20"
+    >
+    </div>
+  </div>
+
+  <!-- Hero grid overlay -->
+  <div
+    class="absolute inset-0 grid-overlay opacity-50 pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+    <div class="flex flex-col items-center gap-4 sm:gap-10">
+      <!-- ─── Text content (always centered) ─── -->
+      <div class="w-full max-w-2xl animate-fade-up text-left">
+        <!-- Badge pill -->
+        <div
+          class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-dark-border bg-dark-surface/50 text-hero-accent text-[9px] sm:text-[10px] font-bold tracking-widest uppercase mb-3 sm:mb-6"
+        >
+          <Icon name="zap" size={10} class="w-2.5 h-2.5 shrink-0" />
+          <span>The riding assistant and riders companion for every rider</span>
+        </div>
+
+        <!-- Headline — 4 stacked lines, left-aligned -->
+        <h1
+          class="text-left text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-black italic tracking-tighter leading-[0.92] mb-4 sm:mb-8 uppercase"
+        >
+          <span class="block overflow-hidden">
+            <span class="block animate-slide-in-1">YOUR PACK.</span>
+          </span>
+          <span class="block overflow-hidden">
+            <span
+              class="block animate-slide-in-2 text-hero-accent text-outline-white"
+              >SYNCED.</span
+            >
+          </span>
+          <span class="block overflow-hidden">
+            <span class="block animate-slide-in-3">YOUR RIDE.</span>
+          </span>
+          <span class="block overflow-hidden">
+            <span class="block animate-slide-in-4">SECURED.</span>
+          </span>
+        </h1>
+
+        <!-- Body text -->
+        <p
+          class="text-base text-left sm:text-lg md:text-xl text-dark-text-secondary max-w-xl mb-6 sm:mb-12 reveal"
+          style="transition-delay:600ms"
+        >
+          Rydal is a riding companion for safe riding that transforms your
+          smartphone into a dedicated motorcycle dashboard, with real-time group
+          riding tracking and hands-free utility.
+        </p>
+
+        <!-- CTAs -->
+        <div
+          class="flex flex-nowrap gap-2 sm:gap-4 reveal justify-start"
+          style="transition-delay:800ms"
+        >
+          <a
+            href="#waitlist"
+            id="hero-cta-waitlist"
+            class="btn-neon whitespace-nowrap px-5 sm:px-10 py-3 sm:py-5 bg-hero-accent text-white font-black italic uppercase tracking-tighter text-sm sm:text-xl hover:scale-105 active:scale-95 transition-all text-center shadow-[0_0_30px_rgba(47,107,255,0.4)] hover:shadow-[0_0_60px_rgba(47,107,255,0.7)]"
+          >
+            Join the Waitlist
+          </a>
+          <a
+            href="#features"
+            id="hero-cta-features"
+            class="whitespace-nowrap px-5 sm:px-10 py-3 sm:py-5 border border-dark-border hover:border-hero-accent/60 hover:bg-dark-surface text-white font-black italic uppercase tracking-tighter text-sm sm:text-xl transition-all text-center group"
+          >
+            <span class="group-hover:text-hero-accent transition-colors">Explore Features</span>
+          </a>
+        </div>
+
+        <!-- Micro stats -->
+        <div
+          class="flex items-center justify-center gap-4 sm:gap-8 mt-6 sm:mt-12 reveal flex-wrap"
+          style="transition-delay:1000ms"
+        >
+          <div class="flex flex-col items-center">
+            <span class="text-xl sm:text-2xl font-black italic text-white"
+              >4,200+</span
+            >
+            <span
+              class="text-[9px] sm:text-[10px] uppercase tracking-widest text-dark-text-secondary"
+              >Riders waiting</span
+            >
+          </div>
+          <div class="w-px h-8 bg-dark-border hidden xs:block"></div>
+          <div class="flex flex-col items-center">
+            <span class="text-xl sm:text-2xl font-black italic text-hero-accent"
+              >Real-time</span
+            >
+            <span
+              class="text-[9px] sm:text-[10px] uppercase tracking-widest text-dark-text-secondary"
+              >Group sync</span
+            >
+          </div>
+          <div class="w-px h-8 bg-dark-border hidden xs:block"></div>
+          <div class="flex flex-col items-center">
+            <span class="text-xl sm:text-2xl font-black italic text-white"
+              >AI-first</span
+            >
+            <span
+              class="text-[9px] sm:text-[10px] uppercase tracking-widest text-dark-text-secondary"
+              >Voice control</span
+            >
+          </div>
+        </div>
       </div>
-      <h1 class="text-6xl md:text-8xl font-black italic tracking-tighter leading-[0.9] mb-8 uppercase">
-        YOUR PACK.<br />
-        <span class="text-hero-accent text-outline-white">SYNCED.</span><br />
-        YOUR RIDE.<br />
-        SECURED.
-      </h1>
-      <p class="text-lg md:text-xl text-dark-text-secondary max-w-xl mb-12">
-        Rydal is a riding companion for safe riding that transforms your smartphone into a dedicated motorcycle dashboard, with real-time group riding tracking and hands-free utility.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#waitlist" class="px-10 py-5 bg-hero-accent text-white font-black italic uppercase tracking-tighter text-xl hover:scale-105 active:scale-95 transition-all text-center">
-          Join the Waitlist
-        </a>
-        <a href="#features" class="px-10 py-5 border border-dark-border hover:bg-dark-surface text-white font-black italic uppercase tracking-tighter text-xl transition-all text-center">
-          Explore Features
-        </a>
+
+      <!-- ─── Motorcycle SVG (hidden on xs, centered below text on sm+) ─── -->
+      <div
+        class="relative w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto flex items-center justify-center hidden sm:flex"
+        id="bike-parallax-wrapper"
+        aria-hidden="true"
+      >
+        <!-- Radar rings -->
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none"
+        >
+          <div
+            class="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-hero-accent/10 animate-radar"
+            style="animation-delay:0s;"
+          >
+          </div>
+          <div
+            class="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-hero-accent/10 animate-radar"
+            style="animation-delay:1s;"
+          >
+          </div>
+          <div
+            class="absolute w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-hero-accent/10 animate-radar"
+            style="animation-delay:2s;"
+          >
+          </div>
+        </div>
+
+        <!-- Ground glow -->
+        <div
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 w-48 sm:w-72 h-6 bg-hero-accent/20 blur-2xl rounded-full"
+        >
+        </div>
+
+        <!-- Speed trail lines -->
+        <div
+          class="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col gap-3 pointer-events-none"
+        >
+          <div
+            class="h-px bg-gradient-to-r from-transparent via-hero-accent/50 to-transparent speed-trail"
+            style="width:90px; animation-delay:0s;"
+          >
+          </div>
+          <div
+            class="h-px bg-gradient-to-r from-transparent via-hero-accent/30 to-transparent speed-trail"
+            style="width:60px; animation-delay:0.3s;"
+          >
+          </div>
+          <div
+            class="h-px bg-gradient-to-r from-transparent via-hero-accent/40 to-transparent speed-trail"
+            style="width:110px; animation-delay:0.6s;"
+          >
+          </div>
+          <div
+            class="h-px bg-gradient-to-r from-transparent via-hero-accent/20 to-transparent speed-trail"
+            style="width:45px; animation-delay:0.9s;"
+          >
+          </div>
+        </div>
+
+        <!-- Motorcycle SVG -->
+        <div
+          id="hero-bike"
+          class="bike-enter bike-float bike-glow relative z-10 w-full"
+        >
+          <svg
+            viewBox="0 0 520 300"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-full h-auto drop-shadow-2xl"
+            role="img"
+            aria-label="Sport motorcycle illustration"
+          >
+            <!-- Rear wheel -->
+            <circle
+              cx="130"
+              cy="230"
+              r="65"
+              fill="none"
+              stroke="#2F6BFF"
+              stroke-width="8"
+              opacity="0.9"></circle>
+            <circle
+              cx="130"
+              cy="230"
+              r="52"
+              fill="none"
+              stroke="#1a1a1a"
+              stroke-width="18"
+              opacity="0.8"></circle>
+            <circle
+              cx="130"
+              cy="230"
+              r="45"
+              fill="none"
+              stroke="#2F6BFF"
+              stroke-width="2"
+              opacity="0.4"></circle>
+            <line
+              x1="130"
+              y1="165"
+              x2="130"
+              y2="230"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.5"></line>
+            <line
+              x1="193"
+              y1="193"
+              x2="130"
+              y2="230"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.5"></line>
+            <line
+              x1="193"
+              y1="267"
+              x2="130"
+              y2="230"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.5"></line>
+            <line
+              x1="130"
+              y1="295"
+              x2="130"
+              y2="230"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.5"></line>
+            <line
+              x1="67"
+              y1="267"
+              x2="130"
+              y2="230"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.5"></line>
+            <line
+              x1="67"
+              y1="193"
+              x2="130"
+              y2="230"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.5"></line>
+            <circle cx="130" cy="230" r="10" fill="#2F6BFF" opacity="0.8"
+            ></circle>
+            <circle cx="130" cy="230" r="4" fill="#0A0A0A"></circle>
+            <!-- Front wheel -->
+            <circle
+              cx="390"
+              cy="230"
+              r="65"
+              fill="none"
+              stroke="#F0EEE8"
+              stroke-width="8"
+              opacity="0.85"></circle>
+            <circle
+              cx="390"
+              cy="230"
+              r="52"
+              fill="none"
+              stroke="#1a1a1a"
+              stroke-width="18"
+              opacity="0.8"></circle>
+            <circle
+              cx="390"
+              cy="230"
+              r="45"
+              fill="none"
+              stroke="#F0EEE8"
+              stroke-width="2"
+              opacity="0.3"></circle>
+            <line
+              x1="390"
+              y1="165"
+              x2="390"
+              y2="230"
+              stroke="#F0EEE8"
+              stroke-width="1.5"
+              opacity="0.4"></line>
+            <line
+              x1="453"
+              y1="193"
+              x2="390"
+              y2="230"
+              stroke="#F0EEE8"
+              stroke-width="1.5"
+              opacity="0.4"></line>
+            <line
+              x1="453"
+              y1="267"
+              x2="390"
+              y2="230"
+              stroke="#F0EEE8"
+              stroke-width="1.5"
+              opacity="0.4"></line>
+            <line
+              x1="390"
+              y1="295"
+              x2="390"
+              y2="230"
+              stroke="#F0EEE8"
+              stroke-width="1.5"
+              opacity="0.4"></line>
+            <line
+              x1="327"
+              y1="267"
+              x2="390"
+              y2="230"
+              stroke="#F0EEE8"
+              stroke-width="1.5"
+              opacity="0.4"></line>
+            <line
+              x1="327"
+              y1="193"
+              x2="390"
+              y2="230"
+              stroke="#F0EEE8"
+              stroke-width="1.5"
+              opacity="0.4"></line>
+            <circle cx="390" cy="230" r="10" fill="#F0EEE8" opacity="0.6"
+            ></circle>
+            <circle cx="390" cy="230" r="4" fill="#0A0A0A"></circle>
+            <!-- Swingarm -->
+            <line
+              x1="130"
+              y1="228"
+              x2="230"
+              y2="200"
+              stroke="#888580"
+              stroke-width="8"
+              stroke-linecap="round"
+              opacity="0.7"></line>
+            <!-- Main frame -->
+            <path
+              d="M 230 200 L 200 130 L 280 100 L 360 130 L 390 165"
+              fill="none"
+              stroke="#F0EEE8"
+              stroke-width="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.9"></path>
+            <path
+              d="M 230 200 L 175 190 L 140 200"
+              fill="none"
+              stroke="#888580"
+              stroke-width="7"
+              stroke-linecap="round"
+              opacity="0.8"></path>
+            <!-- Engine -->
+            <rect
+              x="200"
+              y="180"
+              width="90"
+              height="55"
+              rx="6"
+              fill="#1a1a1a"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.9"></rect>
+            <rect
+              x="213"
+              y="193"
+              width="64"
+              height="30"
+              rx="4"
+              fill="#111111"
+              stroke="#2F6BFF"
+              stroke-width="1"
+              opacity="0.6"></rect>
+            <!-- Exhaust -->
+            <path
+              d="M 210 235 Q 170 250 140 245"
+              fill="none"
+              stroke="#F0A500"
+              stroke-width="5"
+              stroke-linecap="round"
+              opacity="0.7"></path>
+            <ellipse
+              cx="138"
+              cy="245"
+              rx="8"
+              ry="4"
+              fill="#F0A500"
+              opacity="0.4"></ellipse>
+            <!-- Fork -->
+            <line
+              x1="360"
+              y1="130"
+              x2="390"
+              y2="165"
+              stroke="#F0EEE8"
+              stroke-width="9"
+              stroke-linecap="round"
+              opacity="0.9"></line>
+            <line
+              x1="370"
+              y1="145"
+              x2="392"
+              y2="175"
+              stroke="#888580"
+              stroke-width="5"
+              stroke-linecap="round"
+              opacity="0.6"></line>
+            <!-- Fairing -->
+            <path
+              d="M 280 100 Q 350 70 410 90 Q 430 100 420 120 L 390 165 L 360 130 Z"
+              fill="#111111"
+              stroke="#2F6BFF"
+              stroke-width="2"
+              opacity="0.95"></path>
+            <path
+              d="M 300 95 Q 365 68 408 92"
+              fill="none"
+              stroke="#2F6BFF"
+              stroke-width="3"
+              opacity="0.5"></path>
+            <!-- Headlight -->
+            <ellipse
+              cx="415"
+              cy="100"
+              rx="18"
+              ry="12"
+              fill="#2F6BFF"
+              opacity="0.9"></ellipse>
+            <ellipse cx="415" cy="100" rx="10" ry="7" fill="white" opacity="0.8"
+            ></ellipse>
+            <path
+              d="M 430 95 L 500 75 M 432 102 L 505 98 M 430 109 L 498 118"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              opacity="0.3"></path>
+            <!-- Tank -->
+            <path
+              d="M 200 130 Q 240 110 280 100 L 360 130 L 340 165 L 200 165 Z"
+              fill="#1a1a1a"
+              stroke="#242424"
+              stroke-width="1.5"
+              opacity="0.95"></path>
+            <path
+              d="M 215 148 L 340 148"
+              stroke="#2F6BFF"
+              stroke-width="1.5"
+              opacity="0.4"></path>
+            <!-- Handlebar -->
+            <path
+              d="M 370 120 Q 385 105 400 108 Q 408 112 405 122"
+              fill="none"
+              stroke="#888580"
+              stroke-width="6"
+              stroke-linecap="round"
+              opacity="0.8"></path>
+            <!-- Seat -->
+            <path
+              d="M 175 188 Q 215 175 240 178 L 240 195 Q 210 192 175 200 Z"
+              fill="#242424"
+              stroke="#2F6BFF"
+              stroke-width="1"
+              opacity="0.9"></path>
+            <!-- Tail light -->
+            <ellipse
+              cx="155"
+              cy="192"
+              rx="12"
+              ry="6"
+              fill="#C23B22"
+              opacity="0.8"></ellipse>
+            <ellipse
+              cx="155"
+              cy="192"
+              rx="6"
+              ry="3"
+              fill="#ff4444"
+              opacity="0.9"></ellipse>
+            <!-- Footpeg -->
+            <circle
+              cx="240"
+              cy="235"
+              r="6"
+              fill="#242424"
+              stroke="#888580"
+              stroke-width="2"
+              opacity="0.8"></circle>
+            <line
+              x1="240"
+              y1="235"
+              x2="215"
+              y2="245"
+              stroke="#888580"
+              stroke-width="3"
+              stroke-linecap="round"
+              opacity="0.6"></line>
+            <!-- Ground shadow -->
+            <ellipse
+              cx="260"
+              cy="298"
+              rx="180"
+              ry="10"
+              fill="url(#ground-gradient)"
+              opacity="0.5"></ellipse>
+            <defs>
+              <radialGradient id="ground-gradient" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#2F6BFF" stop-opacity="0.3"
+                ></stop>
+                <stop offset="100%" stop-color="#2F6BFF" stop-opacity="0"
+                ></stop>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- Floating chips -->
+        <div
+          class="absolute top-4 right-0 glass-panel px-3 py-1.5 rounded-sm flex items-center gap-2 reveal"
+          style="transition-delay:1200ms"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"
+          ></span>
+          <span class="text-[9px] uppercase tracking-widest font-bold"
+            >Live Tracking</span
+          >
+        </div>
+        <div
+          class="absolute bottom-4 left-0 glass-panel px-3 py-1.5 rounded-sm flex items-center gap-2 reveal"
+          style="transition-delay:1400ms"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-danger animate-ping"></span>
+          <span class="text-[9px] uppercase tracking-widest font-bold"
+            >SOS Ready</span
+          >
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30" aria-hidden="true">
-    <span class="text-[10px] uppercase tracking-[0.4em] font-bold">Scroll to navigate</span>
-    <div class="w-px h-12 bg-gradient-to-b from-hero-accent to-transparent"></div>
+  <!-- Scroll indicator -->
+  <div
+    class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40"
+    aria-hidden="true"
+  >
+    <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.4em] font-bold"
+      >Scroll to navigate</span
+    >
+    <div
+      class="w-px h-8 sm:h-12 bg-gradient-to-b from-hero-accent to-transparent"
+    >
+    </div>
   </div>
 </section>
+
+<style>
+  @keyframes slide-in-1 {
+    from {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-2 {
+    from {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-3 {
+    from {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-4 {
+    from {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .animate-slide-in-1 {
+    animation: slide-in-1 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .animate-slide-in-2 {
+    animation: slide-in-2 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+  .animate-slide-in-3 {
+    animation: slide-in-3 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+  .animate-slide-in-4 {
+    animation: slide-in-4 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  }
+
+  /* Extra small screens */
+  @media (max-width: 400px) {
+    .xs\:flex-row {
+      flex-direction: row;
+    }
+    .xs\:block {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // Parallax effect on the bike wrapper following mouse (desktop only)
+  const bikeWrapper = document.getElementById("bike-parallax-wrapper");
+  const heroBike = document.getElementById("hero-bike");
+  if (
+    bikeWrapper &&
+    heroBike &&
+    window.matchMedia("(min-width: 1024px)").matches
+  ) {
+    document.addEventListener("mousemove", (e) => {
+      const { innerWidth, innerHeight } = window;
+      const dx = (e.clientX / innerWidth - 0.5) * 20;
+      const dy = (e.clientY / innerHeight - 0.5) * 10;
+      bikeWrapper.style.transform = `translate(${dx * 0.6}px, ${dy * 0.4}px)`;
+    });
+  }
+
+  // Hero scroll parallax (speed lines fade out as you scroll)
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const heroEl = document.getElementById("hero");
+    if (!heroEl) return;
+    heroEl.querySelectorAll(".speed-line").forEach((line) => {
+      (line as HTMLElement).style.opacity = String(
+        Math.max(0, 1 - scrollY * 0.003),
+      );
+    });
+    // Subtle parallax on bike (only on desktop)
+    if (heroBike && window.matchMedia("(min-width: 640px)").matches) {
+      (heroBike as HTMLElement).style.transform =
+        `translateY(${scrollY * 0.08}px)`;
+    }
+  });
+</script>

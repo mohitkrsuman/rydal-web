@@ -22,22 +22,22 @@ export default function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <input
           required
           type="text"
           placeholder="YOUR NAME"
-          className="w-full bg-dark-surface border border-dark-border px-6 py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white"
+          className="w-full bg-dark-surface border border-dark-border px-4 sm:px-6 py-4 sm:py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white text-sm sm:text-base"
         />
         <input
           required
           type="email"
           placeholder="EMAIL ADDRESS"
-          className="w-full bg-dark-surface border border-dark-border px-6 py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white"
+          className="w-full bg-dark-surface border border-dark-border px-4 sm:px-6 py-4 sm:py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white text-sm sm:text-base"
         />
       </div>
-      <select className="w-full bg-dark-surface border border-dark-border px-6 py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white appearance-none">
+      <select className="w-full bg-dark-surface border border-dark-border px-4 sm:px-6 py-4 sm:py-5 focus:border-hero-accent outline-none transition-colors font-black italic uppercase tracking-widest text-white appearance-none text-sm sm:text-base">
         <option>SELECT YOUR MACHINE</option>
         <option>SPORT / STREET</option>
         <option>ADV / DUAL SPORT</option>
@@ -48,12 +48,12 @@ export default function WaitlistForm() {
       <button
         type="submit"
         disabled={formStatus === 'submitting'}
-        className="w-full py-6 bg-hero-accent text-white font-black italic uppercase text-2xl tracking-tighter hover:bg-opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-4"
+        className="w-full py-4 sm:py-6 bg-hero-accent text-white font-black italic uppercase text-lg sm:text-2xl tracking-tighter hover:bg-opacity-90 disabled:opacity-50 transition-all flex items-center justify-center gap-3 sm:gap-4"
       >
         {formStatus === 'submitting' ? 'PROCESSING...' : (
           <>
             Request Beta Access
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
           </>
         )}
       </button>

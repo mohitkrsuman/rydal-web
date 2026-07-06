@@ -3,33 +3,51 @@ import Icon from '../Icon.astro';
 import { features } from '../../data/site';
 ---
 
-<section id="features" class="py-24 border-y border-dark-border bg-dark-surface/30">
+<section id="features" class="py-16 sm:py-24 lg:py-32 border-y border-dark-border bg-dark-surface/30 relative overflow-hidden">
+  <!-- Decorative top accent -->
+  <div class="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-hero-accent/60 to-transparent"></div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-white">
-      <div class="max-w-2xl">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 lg:mb-20 gap-4 sm:gap-8 text-white">
+      <div class="max-w-2xl reveal-left">
+        <div class="section-divider"></div>
         <span class="text-hero-accent font-mono text-xs tracking-widest uppercase mb-2 block">// Core Ecosystem</span>
-        <h2 class="text-4xl md:text-5xl font-black italic tracking-tight uppercase">Performance Driven Engineering</h2>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black italic tracking-tight uppercase">Performance Driven Engineering</h2>
       </div>
-      <div class="hidden md:block text-right">
-        <span class="text-dark-text-secondary font-mono text-4xl block">01-04</span>
+      <div class="text-left md:text-right reveal-right">
+        <span class="text-dark-text-secondary font-mono text-3xl sm:text-4xl lg:text-5xl block">01-04</span>
         <span class="text-[10px] uppercase tracking-widest opacity-40 italic">System modules</span>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-dark-border border border-dark-border">
-      {features.map((feature) => (
-        <article class="bg-dark-bg p-8 group hover:bg-dark-surface transition-all duration-500">
-          <div class="mb-6 transform group-hover:scale-110 transition-transform duration-500">
-            <Icon name={feature.icon} size={32} class="w-8 h-8 text-hero-accent" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-dark-border border border-dark-border stagger-children">
+      {features.map((feature, i) => (
+        <article
+          id={`feature-card-${i + 1}`}
+          class="feature-card bg-dark-bg p-6 sm:p-8 group hover:bg-dark-surface reveal"
+          style={`transition-delay: ${i * 120}ms`}
+        >
+          <div class="scan-line opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          <div class="mb-5 sm:mb-6 transform group-hover:scale-110 transition-transform duration-500 relative">
+            <div class="absolute inset-0 rounded-full bg-hero-accent/20 scale-0 group-hover:scale-150 transition-transform duration-500 blur-md"></div>
+            <Icon name={feature.icon} size={28} class="w-7 h-7 sm:w-8 sm:h-8 text-hero-accent relative z-10" />
           </div>
-          <h3 class="text-xl font-black italic uppercase mb-4 tracking-tighter group-hover:text-hero-accent transition-colors">
+
+          <h3 class="text-lg sm:text-xl font-black italic uppercase mb-3 sm:mb-4 tracking-tighter group-hover:text-hero-accent transition-colors">
             {feature.title}
           </h3>
-          <p class="text-dark-text-secondary text-sm leading-relaxed">
+          <p class="text-dark-text-secondary text-sm leading-relaxed group-hover:text-dark-text-primary transition-colors duration-300">
             {feature.description}
           </p>
+
+          <div class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-dark-border/50">
+            <span class="text-[10px] font-mono text-hero-accent/40 tracking-widest">0{i + 1} / 04</span>
+          </div>
         </article>
       ))}
     </div>
   </div>
+
+  <div class="absolute -bottom-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-hero-accent/60 to-transparent"></div>
 </section>

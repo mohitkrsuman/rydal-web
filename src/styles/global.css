@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-dark-bg text-dark-text-primary antialiased;
     cursor: crosshair;
+    overflow-x: hidden;
   }
   ::selection {
     background: #2F6BFF;
@@ -13,6 +19,9 @@
   }
 }
 
+/* =============================================
+   GLASS & SURFACE COMPONENTS
+   ============================================= */
 @layer components {
   .glass-panel {
     @apply bg-dark-surface/80 backdrop-blur-md border border-dark-border;
@@ -21,24 +30,222 @@
     -webkit-text-stroke: 1px white;
     color: transparent;
   }
+  .text-outline-accent {
+    -webkit-text-stroke: 1px #2F6BFF;
+    color: transparent;
+  }
+
+  /* Neon glow button */
+  .btn-neon {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .btn-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+  .btn-neon:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Speed line overlay for hero */
+  .speed-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .speed-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(47,107,255,0.4), transparent);
+    animation: speed-line-anim var(--duration, 2s) linear infinite;
+    animation-delay: var(--delay, 0s);
+    top: var(--top, 50%);
+    width: 60%;
+    left: -60%;
+  }
 }
 
+/* =============================================
+   SCROLL-REVEAL SYSTEM
+   ============================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Staggered children */
+.stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > *:nth-child(2) { transition-delay: 100ms; }
+.stagger-children > *:nth-child(3) { transition-delay: 200ms; }
+.stagger-children > *:nth-child(4) { transition-delay: 300ms; }
+.stagger-children > *:nth-child(5) { transition-delay: 400ms; }
+.stagger-children > *:nth-child(6) { transition-delay: 500ms; }
+
+/* =============================================
+   PARALLAX SYSTEM
+   ============================================= */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+.parallax-layer {
+  will-change: transform;
+}
+
+/* =============================================
+   BIKE / HERO ANIMATIONS
+   ============================================= */
+.bike-enter {
+  animation: bike-slide-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+.bike-float {
+  animation: bike-float 6s ease-in-out infinite;
+}
+.bike-glow {
+  animation: bike-glow-pulse 3s ease-in-out infinite;
+}
+.speed-trail {
+  animation: speed-trail-fade 2s ease-in-out infinite;
+}
+
+/* =============================================
+   FEATURE CARD HOVER EFFECTS
+   ============================================= */
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2F6BFF, transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.feature-card:hover::after {
+  transform: scaleX(1);
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(47, 107, 255, 0.1);
+}
+
+/* =============================================
+   COUNTER/TICKER ANIMATION
+   ============================================= */
+.count-up {
+  display: inline-block;
+  animation: count-up-anim 2s ease-out forwards;
+}
+
+/* =============================================
+   CURSOR GLOW
+   ============================================= */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(47,107,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+/* =============================================
+   SECTION DIVIDERS
+   ============================================= */
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #2F6BFF, transparent);
+  margin-bottom: 1.5rem;
+}
+
+/* =============================================
+   PROGRESS / SCAN LINE
+   ============================================= */
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2F6BFF, transparent);
+  animation: scan 4s linear infinite;
+}
+
+/* =============================================
+   GRID OVERLAY PATTERN
+   ============================================= */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(47,107,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,107,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* =============================================
+   KEYFRAMES
+   ============================================= */
 @layer utilities {
-  .animate-blob-1 {
-    animation: blob-1 20s linear infinite;
-  }
-  .animate-blob-2 {
-    animation: blob-2 25s linear infinite;
-  }
-  .animate-fade-up {
-    animation: fade-up 0.8s ease-out forwards;
-  }
-  .animate-spin-slow {
-    animation: spin 20s linear infinite;
-  }
-  .animate-pulse-mic {
-    animation: pulse-mic 2s ease-in-out infinite;
-  }
+  .animate-blob-1 { animation: blob-1 20s linear infinite; }
+  .animate-blob-2 { animation: blob-2 25s linear infinite; }
+  .animate-fade-up { animation: fade-up 0.8s ease-out forwards; }
+  .animate-spin-slow { animation: spin 20s linear infinite; }
+  .animate-pulse-mic { animation: pulse-mic 2s ease-in-out infinite; }
+  .animate-shimmer { animation: shimmer 3s linear infinite; }
+  .animate-radar { animation: radar 3s ease-out infinite; }
+  .animate-speed-trail { animation: speed-trail-fade 1.5s ease-in-out infinite; }
 }
 
 @keyframes blob-1 {
@@ -54,17 +261,85 @@
 }
 
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse-mic {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(47,107,255,0.5); }
+  50%       { transform: scale(1.12); box-shadow: 0 0 60px rgba(47,107,255,0.8); }
+}
+
+@keyframes bike-slide-in {
+  from { opacity: 0; transform: translateX(120px) scale(0.9); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes bike-float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-18px) rotate(1deg); }
+}
+
+@keyframes bike-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(47,107,255,0.4)) drop-shadow(0 0 40px rgba(47,107,255,0.15)); }
+  50%       { filter: drop-shadow(0 0 30px rgba(47,107,255,0.7)) drop-shadow(0 0 80px rgba(47,107,255,0.3)); }
+}
+
+@keyframes speed-trail-fade {
+  0%   { opacity: 0; transform: scaleX(0) translateX(0); }
+  30%  { opacity: 0.8; transform: scaleX(1) translateX(0); }
+  100% { opacity: 0; transform: scaleX(1) translateX(-30px); }
+}
+
+@keyframes speed-line-anim {
+  0%   { left: -60%; opacity: 0; }
+  10%  { opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { left: 110%; opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes scan {
+  0%   { top: 0%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes radar {
+  0%   { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes count-up-anim {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-border {
+  0%, 100% { border-color: rgba(47,107,255,0.3); }
+  50%       { border-color: rgba(47,107,255,0.8); }
+}
+
+@keyframes text-flicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.4; }
+  94%       { opacity: 1; }
+  96%       { opacity: 0.6; }
+  97%       { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-80px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(80px); }
+  to   { opacity: 1; transform: translateX(0); }
 }

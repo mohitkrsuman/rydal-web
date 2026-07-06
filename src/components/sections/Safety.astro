@@ -2,57 +2,99 @@
 import Icon from '../Icon.astro';
 ---
 
-<section id="safety" class="py-32 bg-dark-bg overflow-hidden relative">
+<section id="safety" class="py-16 sm:py-24 lg:py-32 bg-dark-bg overflow-hidden relative parallax-container">
+
+  <!-- Ambient glow -->
+  <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-hero-accent/5 blur-[100px] pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Bike silhouette watermark (desktop only) -->
+  <div class="absolute right-0 bottom-0 opacity-[0.025] pointer-events-none hidden xl:block" aria-hidden="true">
+    <svg viewBox="0 0 520 300" width="600" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="130" cy="230" r="65" fill="none" stroke="white" stroke-width="8"/>
+      <circle cx="390" cy="230" r="65" fill="none" stroke="white" stroke-width="8"/>
+      <path d="M 230 200 L 200 130 L 280 100 L 360 130 L 390 165" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 280 100 Q 350 70 410 90 Q 430 100 420 120 L 390 165 L 360 130 Z" fill="white"/>
+    </svg>
+  </div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="text-center mb-20">
-      <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-6">
+    <div class="text-center mb-12 sm:mb-16 lg:mb-24">
+      <div class="section-divider mx-auto reveal"></div>
+      <h2 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black italic tracking-tighter uppercase mb-4 sm:mb-6 reveal">
         The Dual-Layer <span class="text-hero-accent">Safety Net</span>
       </h2>
-      <p class="text-dark-text-secondary max-w-2xl mx-auto uppercase tracking-wider text-sm font-bold">
+      <p class="text-dark-text-secondary max-w-2xl mx-auto uppercase tracking-wider text-xs sm:text-sm font-bold reveal" style="transition-delay:150ms">
         Whether you're on a solo commute or a cross-country tour, help is always one signal away.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      <article class="glass-panel p-10 relative overflow-hidden hover:-translate-y-2 transition-transform duration-300">
-        <div class="absolute top-0 right-0 p-8 opacity-10" aria-hidden="true">
-          <Icon name="users" size={120} class="text-hero-accent" />
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-14">
+
+      <!-- Group Riders card -->
+      <article
+        id="safety-group"
+        class="glass-panel p-6 sm:p-10 relative overflow-hidden group hover:-translate-y-2 sm:hover:-translate-y-3 transition-all duration-500 cursor-default reveal-left"
+        style="border-color: rgba(47,107,255,0.25); animation: glow-border 4s ease-in-out infinite;"
+      >
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-hero-accent via-hero-accent/60 to-transparent"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-hero-accent/5 to-transparent pointer-events-none"></div>
+        <div class="absolute top-0 right-0 p-4 sm:p-8 opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500" aria-hidden="true">
+          <Icon name="users" size={100} class="text-hero-accent sm:hidden" />
+          <Icon name="users" size={140} class="text-hero-accent hidden sm:block" />
         </div>
-        <div class="flex items-center gap-4 mb-8">
-          <div class="p-4 bg-hero-accent/10 rounded-full">
-            <Icon name="shield" size={32} class="w-8 h-8 text-hero-accent" />
+
+        <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div class="p-3 sm:p-4 bg-hero-accent/10 rounded-full group-hover:bg-hero-accent/20 transition-colors duration-300 relative shrink-0">
+            <div class="absolute inset-0 rounded-full border border-hero-accent/30 animate-radar"></div>
+            <div class="absolute inset-0 rounded-full border border-hero-accent/20 animate-radar" style="animation-delay: 1s;"></div>
+            <Icon name="shield" size={24} class="w-6 h-6 sm:w-8 sm:h-8 text-hero-accent relative z-10" />
           </div>
-          <span class="text-xs font-mono tracking-widest uppercase opacity-50">Mode: Pack Synchronization</span>
+          <span class="text-[10px] font-mono tracking-widest uppercase opacity-50">Mode: Pack Synchronization</span>
         </div>
-        <h3 class="text-3xl font-black italic uppercase mb-6 tracking-tighter">For Group Riders</h3>
-        <p class="text-dark-text-secondary mb-8 text-lg">
-          In the event of a crash, every member in your group receives <strong>instant, high-priority alerts</strong> with exact GPS coordinates. Friends become first responders.
+
+        <h3 class="text-2xl sm:text-3xl font-black italic uppercase mb-4 sm:mb-6 tracking-tighter group-hover:text-hero-accent transition-colors duration-300">For Group Riders</h3>
+        <p class="text-dark-text-secondary mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
+          In the event of a crash, every member in your group receives <strong class="text-dark-text-primary">instant, high-priority alerts</strong> with exact GPS coordinates. Friends become first responders.
         </p>
-        <div class="border-t border-dark-border pt-8 mt-auto">
+
+        <div class="border-t border-dark-border pt-6 sm:pt-8">
           <div class="flex items-center gap-3 text-success font-bold uppercase text-xs tracking-widest">
-            <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+            <span class="w-2 h-2 rounded-full bg-success animate-pulse shrink-0"></span>
             Immediate Support Protocol
           </div>
         </div>
       </article>
 
-      <article class="glass-panel p-10 relative overflow-hidden border-hero-accent/30 hover:-translate-y-2 transition-transform duration-300">
-        <div class="absolute top-0 right-0 p-8 opacity-10 text-white" aria-hidden="true">
-          <Icon name="navigation" size={120} />
+      <!-- Solo Riders card -->
+      <article
+        id="safety-solo"
+        class="glass-panel p-6 sm:p-10 relative overflow-hidden group hover:-translate-y-2 sm:hover:-translate-y-3 transition-all duration-500 cursor-default reveal-right"
+        style="border-color: rgba(194,59,34,0.2);"
+      >
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-danger via-danger/60 to-transparent"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-danger/5 to-transparent pointer-events-none"></div>
+        <div class="absolute top-0 right-0 p-4 sm:p-8 opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 text-white" aria-hidden="true">
+          <Icon name="navigation" size={100} class="sm:hidden" />
+          <Icon name="navigation" size={140} class="hidden sm:block" />
         </div>
-        <div class="flex items-center gap-4 mb-8">
-          <div class="p-4 bg-danger/10 rounded-full">
-            <Icon name="bell" size={32} class="w-8 h-8 text-danger" />
+
+        <div class="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div class="p-3 sm:p-4 bg-danger/10 rounded-full group-hover:bg-danger/20 transition-colors duration-300 relative shrink-0">
+            <div class="absolute inset-0 rounded-full border border-danger/30 animate-radar"></div>
+            <div class="absolute inset-0 rounded-full border border-danger/20 animate-radar" style="animation-delay: 1s;"></div>
+            <Icon name="bell" size={24} class="w-6 h-6 sm:w-8 sm:h-8 text-danger relative z-10" />
           </div>
-          <span class="text-xs font-mono tracking-widest uppercase opacity-50">Mode: Solo Sentry</span>
+          <span class="text-[10px] font-mono tracking-widest uppercase opacity-50">Mode: Solo Sentry</span>
         </div>
-        <h3 class="text-3xl font-black italic uppercase mb-6 tracking-tighter">For Solo Riders</h3>
-        <p class="text-dark-text-secondary mb-8 text-lg text-white">
-          Accident detected? Rydal triggers an <strong>Automatic Emergency SOS</strong>, sending your live location to pre-set contacts via SMS and Data. No rider is ever truly alone.
+
+        <h3 class="text-2xl sm:text-3xl font-black italic uppercase mb-4 sm:mb-6 tracking-tighter group-hover:text-danger transition-colors duration-300">For Solo Riders</h3>
+        <p class="text-dark-text-secondary mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">
+          Accident detected? Rydal triggers an <strong class="text-dark-text-primary">Automatic Emergency SOS</strong>, sending your live location to pre-set contacts via SMS and Data. No rider is ever truly alone.
         </p>
-        <div class="border-t border-dark-border pt-8 mt-auto">
+
+        <div class="border-t border-dark-border pt-6 sm:pt-8">
           <div class="flex items-center gap-3 text-danger font-bold uppercase text-xs tracking-widest">
-            <span class="w-2 h-2 rounded-full bg-danger animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-danger animate-ping shrink-0"></span>
             Emergency Broadcast Protocol
           </div>
         </div>

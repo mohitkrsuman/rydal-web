@@ -3,40 +3,94 @@ import Icon from '../Icon.astro';
 import { voiceFeatures } from '../../data/site';
 ---
 
-<section id="dashboard" class="py-32 border-y border-dark-border bg-dark-surface/50 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <div>
-        <span class="text-hero-accent font-mono text-xs tracking-widest uppercase mb-4 block">// Hands-Free Command</span>
-        <h2 class="text-4xl md:text-6xl font-black italic tracking-tighter uppercase mb-8 leading-tight">
+<section id="dashboard" class="py-16 sm:py-24 lg:py-32 border-y border-dark-border bg-dark-surface/50 relative overflow-hidden">
+
+  <!-- Diagonal stripe background -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-0 left-0 w-full h-full opacity-[0.04]" style="background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(47,107,255,0.5) 40px, rgba(47,107,255,0.5) 41px);"></div>
+  </div>
+
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-hero-accent/40 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-hero-accent/40 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 xl:gap-32 items-center">
+
+      <!-- Left text -->
+      <div class="reveal-left order-2 lg:order-1">
+        <div class="section-divider"></div>
+        <span class="text-hero-accent font-mono text-xs tracking-widest uppercase mb-3 sm:mb-4 block">// Hands-Free Command</span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black italic tracking-tighter uppercase mb-6 sm:mb-8 leading-tight">
           Focus on the road, <br />
           <span class="text-white opacity-40">not the screen.</span>
         </h2>
-        <ul class="space-y-6">
-          {voiceFeatures.map((item) => (
-            <li class="flex items-start gap-4 group">
-              <Icon name="chevron-right" size={20} class="w-5 h-5 text-hero-accent group-hover:translate-x-1 transition-transform shrink-0 mt-0.5" />
-              <span class="text-lg text-dark-text-secondary font-medium tracking-wide">{item}</span>
+        <ul class="space-y-4 sm:space-y-6" id="voice-features-list">
+          {voiceFeatures.map((item, i) => (
+            <li class="flex items-start gap-3 sm:gap-4 group reveal" style={`transition-delay:${i * 100 + 200}ms`}>
+              <div class="p-1 rounded-full bg-hero-accent/10 group-hover:bg-hero-accent/30 transition-colors duration-300 shrink-0 mt-0.5">
+                <Icon name="chevron-right" size={14} class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-hero-accent group-hover:translate-x-1 transition-transform" />
+              </div>
+              <span class="text-base sm:text-lg lg:text-xl text-dark-text-secondary font-medium tracking-wide group-hover:text-dark-text-primary transition-colors duration-300">{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <div class="relative">
-        <div class="aspect-square glass-panel rounded-full flex items-center justify-center relative p-12 border-2 border-hero-accent/40 shadow-[0_0_50px_rgba(47,107,255,0.1)]">
-          <div class="w-full h-full rounded-full border border-dark-border border-dashed animate-spin-slow absolute inset-4" aria-hidden="true"></div>
-          <div class="text-center z-10">
-            <div class="w-24 h-24 bg-hero-accent rounded-full mx-auto mb-8 flex items-center justify-center shadow-[0_0_30px_rgba(47,107,255,0.5)] animate-pulse-mic">
-              <Icon name="mic" size={40} class="w-10 h-10 text-white" />
+      <!-- Right: Voice command orb -->
+      <div class="relative order-1 lg:order-2 reveal-right" id="voice-orb-wrapper">
+        <div class="absolute inset-0 rounded-full bg-hero-accent/5 blur-3xl" aria-hidden="true"></div>
+
+        <!-- Constrain orb size — responsive across all breakpoints -->
+        <div class="max-w-[280px] sm:max-w-sm lg:max-w-md xl:max-w-lg mx-auto">
+          <div class="aspect-square glass-panel rounded-full flex items-center justify-center relative p-8 sm:p-12 border-2 border-hero-accent/40 shadow-[0_0_80px_rgba(47,107,255,0.15)] overflow-hidden">
+
+            <div class="scan-line" style="opacity:0.5" aria-hidden="true"></div>
+            <div class="w-full h-full rounded-full border border-dark-border border-dashed animate-spin-slow absolute inset-4" aria-hidden="true"></div>
+            <div class="w-3/4 h-3/4 rounded-full border border-hero-accent/20 border-dotted absolute" style="animation: spin 12s linear infinite reverse;" aria-hidden="true"></div>
+
+            <div class="absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full border border-hero-accent/25 animate-radar" style="animation-delay:0s;" aria-hidden="true"></div>
+            <div class="absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full border border-hero-accent/15 animate-radar" style="animation-delay:1s;" aria-hidden="true"></div>
+            <div class="absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full border border-hero-accent/10 animate-radar" style="animation-delay:2s;" aria-hidden="true"></div>
+
+            <div class="text-center z-10 relative">
+              <div class="w-16 h-16 sm:w-24 sm:h-24 bg-hero-accent rounded-full mx-auto mb-4 sm:mb-8 flex items-center justify-center shadow-[0_0_40px_rgba(47,107,255,0.6)] animate-pulse-mic relative">
+                <div class="absolute inset-0 rounded-full border-2 border-white/20 animate-ping" style="animation-duration: 2.5s;"></div>
+                <Icon name="mic" size={28} class="w-7 h-7 sm:w-10 sm:h-10 text-white relative z-10" />
+              </div>
+              <div class="font-mono text-hero-accent text-xs sm:text-sm tracking-[0.2em] mb-1 sm:mb-2" style="animation: text-flicker 8s infinite;">LISTENING</div>
+              <p class="text-base sm:text-xl font-bold uppercase tracking-widest text-white italic">"Find nearest shell station"</p>
             </div>
-            <div class="font-mono text-hero-accent text-sm tracking-[0.2em] mb-2">LISTENING</div>
-            <p class="text-xl font-bold uppercase tracking-widest text-white italic">"Find nearest shell station"</p>
           </div>
         </div>
 
-        <div class="absolute -top-4 -right-4 glass-panel px-4 py-2 rounded-sm text-[10px] uppercase tracking-widest font-bold">Latency: 24ms</div>
-        <div class="absolute -bottom-4 -left-4 glass-panel px-4 py-2 rounded-sm text-[10px] uppercase tracking-widest font-bold">Model: Rydal-V1</div>
+        <!-- Floating stat chips -->
+        <div class="absolute -top-3 sm:-top-4 -right-2 sm:-right-4 glass-panel px-3 py-1.5 rounded-sm text-[9px] sm:text-[10px] uppercase tracking-widest font-bold border-hero-accent/30 flex items-center gap-1.5 sm:gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-hero-accent animate-pulse"></span>
+          Latency: 24ms
+        </div>
+        <div class="absolute -bottom-3 sm:-bottom-4 -left-2 sm:-left-4 glass-panel px-3 py-1.5 rounded-sm text-[9px] sm:text-[10px] uppercase tracking-widest font-bold flex items-center gap-1.5 sm:gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+          Model: Rydal-V1
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // 3D tilt parallax on orb — desktop only
+  const orbWrapper = document.getElementById('voice-orb-wrapper');
+  if (orbWrapper && window.matchMedia('(min-width: 1024px)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      const rect  = orbWrapper.getBoundingClientRect();
+      const cx    = rect.left + rect.width  / 2;
+      const cy    = rect.top  + rect.height / 2;
+      const dx    = (e.clientX - cx) / (window.innerWidth  / 2);
+      const dy    = (e.clientY - cy) / (window.innerHeight / 2);
+      orbWrapper.style.transform = `perspective(800px) rotateY(${dx * 8}deg) rotateX(${-dy * 5}deg)`;
+    });
+    document.addEventListener('mouseleave', () => {
+      orbWrapper.style.transform = 'perspective(800px) rotateY(0) rotateX(0)';
+    });
+  }
+</script>

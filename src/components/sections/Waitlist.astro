@@ -3,22 +3,73 @@ import WaitlistForm from '../WaitlistForm';
 import Icon from '../Icon.astro';
 ---
 
-<section id="waitlist" class="py-32 bg-dark-bg relative">
-  <div class="max-w-3xl mx-auto px-4 text-center">
-    <div class="inline-block p-4 bg-hero-accent/10 rounded-2xl mb-8">
-      <Icon name="zap" size={40} class="w-10 h-10 text-hero-accent" />
+<section id="waitlist" class="py-16 sm:py-24 lg:py-32 bg-dark-bg relative overflow-hidden">
+
+  <!-- Large radial glow -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] rounded-full bg-hero-accent/8 blur-[120px]"></div>
+  </div>
+
+  <!-- Speed line decoration -->
+  <div class="speed-lines" aria-hidden="true">
+    <div class="speed-line" style="--top: 20%; --duration: 4s; --delay: 0s;"></div>
+    <div class="speed-line" style="--top: 75%; --duration: 3.5s; --delay: 1.5s;"></div>
+  </div>
+
+  <!-- Grid overlay -->
+  <div class="absolute inset-0 grid-overlay opacity-30 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+
+    <!-- Zap icon -->
+    <div class="inline-block p-3 sm:p-4 bg-hero-accent/10 rounded-2xl mb-6 sm:mb-8 reveal-scale border border-hero-accent/20 shadow-[0_0_30px_rgba(47,107,255,0.2)]">
+      <Icon name="zap" size={32} class="w-8 h-8 sm:w-10 sm:h-10 text-hero-accent animate-pulse-mic" />
     </div>
-    <h2 class="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-6 leading-none">
+
+    <!-- Heading -->
+    <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black italic tracking-tighter uppercase mb-4 sm:mb-6 leading-none reveal" style="transition-delay:100ms">
       Claim Your Spot <br />in the Pack
     </h2>
-    <p class="text-xl text-dark-text-secondary mb-12 uppercase tracking-wide font-bold">
+    <p class="text-base sm:text-xl text-dark-text-secondary mb-8 sm:mb-12 uppercase tracking-wide font-bold reveal" style="transition-delay:250ms">
       Be the first to experience the Rydal ecosystem.
     </p>
 
-    <WaitlistForm client:load />
+    <!-- Waitlist form -->
+    <div class="reveal" style="transition-delay:400ms">
+      <WaitlistForm client:load />
+    </div>
 
-    <p class="mt-8 text-[10px] text-dark-text-secondary uppercase tracking-[0.3em] font-bold">
-      Join 4,200+ riders waiting for the revolution
-    </p>
+    <!-- Social proof -->
+    <div class="mt-8 sm:mt-10 flex items-center justify-center gap-4 sm:gap-6 flex-wrap reveal" style="transition-delay:600ms">
+      <div class="flex -space-x-3">
+        {[...Array(5)].map((_, i) => (
+          <div
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-dark-bg flex items-center justify-center text-[10px] font-bold"
+            style={`background: hsl(${220 + i * 15}, 60%, ${30 + i * 5}%);`}
+          >
+            {String.fromCodePoint(0x1F3CD + (i % 3))}
+          </div>
+        ))}
+      </div>
+      <p class="text-[9px] sm:text-[10px] text-dark-text-secondary uppercase tracking-[0.25em] sm:tracking-[0.3em] font-bold">
+        Join 4,200+ riders waiting for the revolution
+      </p>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="mt-6 sm:mt-8 flex items-center justify-center gap-4 sm:gap-8 flex-wrap reveal" style="transition-delay:750ms">
+      <div class="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] uppercase tracking-widest text-dark-text-secondary font-bold">
+        <Icon name="shield" size={11} class="text-success shrink-0" />
+        <span>No spam</span>
+      </div>
+      <div class="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] uppercase tracking-widest text-dark-text-secondary font-bold">
+        <Icon name="zap" size={11} class="text-hero-accent shrink-0" />
+        <span>Early access</span>
+      </div>
+      <div class="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] uppercase tracking-widest text-dark-text-secondary font-bold">
+        <Icon name="award" size={11} class="text-warning shrink-0" />
+        <span>Founding perks</span>
+      </div>
+    </div>
   </div>
 </section>
